@@ -1,0 +1,477 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap");
+
+/* ---------- Tokens ---------- */
+.sx-page {
+  --bg-void: #0a0e1a;
+  --glass-fill: rgba(255, 255, 255, 0.055);
+  --glass-fill-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-hover: rgba(255, 255, 255, 0.26);
+  --text-hi: #f1f3fb;
+  --text-mid: #a9b0c6;
+  --text-low: #6c7591;
+  --accent: #a78bfa;
+  --like: #34d399;
+  --like-glow: rgba(52, 211, 153, 0.45);
+  --nope: #f87171;
+  --nope-glow: rgba(248, 113, 113, 0.45);
+  --gold: #fbbf24;
+
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--bg-void);
+  color: var(--text-hi);
+  font-family: "Inter", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Ambient background ---------- */
+.sx-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.sx-aurora--one {
+  width: 480px;
+  height: 480px;
+  top: -160px;
+  left: -120px;
+  background: radial-gradient(circle, #5b21b6, transparent 70%);
+}
+.sx-aurora--two {
+  width: 520px;
+  height: 520px;
+  bottom: -200px;
+  right: -140px;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+}
+
+/* ---------- Top bar ---------- */
+.sx-topbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+.sx-logo {
+  font-family: "Sora", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+.sx-counter {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  padding: 6px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-fill);
+}
+
+/* ---------- Stage ---------- */
+.sx-stage {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+}
+
+.sx-deck {
+  position: relative;
+  width: 400px;
+  max-width: 92vw;
+  height: 580px;
+  max-height: 72vh;
+}
+
+/* ---------- Card ---------- */
+.sx-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 28px;
+  background: linear-gradient(
+    160deg,
+    var(--glass-fill-strong),
+    var(--glass-fill)
+  );
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  cursor: grab;
+  touch-action: none;
+  overflow: hidden;
+}
+.sx-card:active {
+  cursor: grabbing;
+}
+
+.sx-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sx-card__title {
+  font-family: "Sora", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+.sx-card__company {
+  margin: 4px 0 0;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+}
+.sx-card__salary {
+  flex-shrink: 0;
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--gold);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.sx-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sx-chip {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  border: 1px solid var(--glass-border);
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.sx-chip--accent {
+  color: var(--accent);
+  border-color: rgba(167, 139, 250, 0.35);
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.sx-card__description {
+  margin: 0;
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sx-card__skills {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sx-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-hi);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--glass-border);
+  padding: 5px 11px;
+  border-radius: 8px;
+}
+
+/* ---------- Drag stamps ---------- */
+.sx-stamp {
+  position: absolute;
+  top: 32px;
+  font-family: "Sora", sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: 3px solid currentColor;
+  pointer-events: none;
+  z-index: 20;
+}
+.sx-stamp--like {
+  left: 28px;
+  color: var(--like);
+  transform: rotate(-14deg);
+}
+.sx-stamp--nope {
+  right: 28px;
+  color: var(--nope);
+  transform: rotate(14deg);
+}
+
+/* ---------- Action buttons ---------- */
+.sx-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.sx-circle-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  background: var(--glass-fill-strong);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+}
+.sx-circle-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+.sx-circle-btn:active {
+  transform: scale(0.94);
+}
+.sx-circle-btn--nope {
+  color: var(--nope);
+  box-shadow: 0 0 0 0 var(--nope-glow);
+}
+.sx-circle-btn--nope:hover {
+  box-shadow: 0 10px 28px var(--nope-glow);
+  border-color: var(--nope);
+}
+.sx-circle-btn--like {
+  color: var(--like);
+  width: 72px;
+  height: 72px;
+  font-size: 1.6rem;
+}
+.sx-circle-btn--like:hover {
+  box-shadow: 0 10px 28px var(--like-glow);
+  border-color: var(--like);
+}
+
+/* ---------- Panels (loading / error / empty) ---------- */
+.sx-panel {
+  width: 380px;
+  max-width: 90vw;
+  text-align: center;
+  padding: 48px 32px;
+  border-radius: 28px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+}
+.sx-panel h2 {
+  font-family: "Sora", sans-serif;
+  margin: 0 0 8px;
+}
+.sx-panel__sub {
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+.sx-panel--muted p {
+  color: var(--text-mid);
+  margin-top: 16px;
+}
+.sx-done-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--like);
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+}
+
+.sx-spinner {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  animation: sx-spin 0.8s linear infinite;
+}
+@keyframes sx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sx-btn-primary {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #0a0e1a;
+  background: linear-gradient(135deg, #a78bfa, #06b6d4);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.sx-btn-primary:hover {
+  transform: translateY(-2px);
+}
+.sx-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.sx-btn-primary--full {
+  width: 100%;
+}
+
+/* ---------- Apply modal ---------- */
+.sx-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 7, 14, 0.65);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+.sx-modal {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  padding: 32px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, var(--glass-fill-strong), var(--glass-fill));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+}
+.sx-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.sx-modal__title {
+  font-family: "Sora", sans-serif;
+  margin: 0 0 4px;
+  padding-right: 32px;
+}
+.sx-modal__sub {
+  color: var(--text-mid);
+  font-size: 0.88rem;
+  margin: 0 0 24px;
+}
+
+.sx-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.sx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sx-field__label {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-weight: 500;
+}
+.sx-field__file {
+  font-size: 0.85rem;
+  color: var(--text-hi);
+}
+.sx-field__filename {
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.sx-field__textarea {
+  resize: vertical;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-hi);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.sx-field__textarea:focus,
+.sx-field__file:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.sx-form__error {
+  color: var(--nope);
+  font-size: 0.82rem;
+  margin: -6px 0 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .sx-topbar {
+    padding: 18px 20px;
+  }
+  .sx-deck {
+    height: 62vh;
+  }
+  .sx-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+  .sx-card__title {
+    font-size: 1.2rem;
+  }
+  .sx-circle-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .sx-circle-btn--like {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .sx-card,
+  .sx-circle-btn,
+  .sx-btn-primary,
+  .sx-modal,
+  .sx-overlay {
+    transition: none !important;
+  }
+  .sx-spinner {
+    animation-duration: 1.6s;
+  }
+}
