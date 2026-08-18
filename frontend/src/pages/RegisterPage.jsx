@@ -33,7 +33,7 @@ function RegisterPage() {
     try {
       console.log(formData);
       await axios.post(
-          "http://127.0.0.1:8000/api/auth/register/",
+          "https://swipex-backend-vercel.vercel.app/api/auth/register/",
            formData
   );
 

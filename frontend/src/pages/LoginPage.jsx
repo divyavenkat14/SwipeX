@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import "./LoginPage.css";
@@ -26,13 +26,10 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
-      const loginResponse = await axios.post(
-        "http://127.0.0.1:8000/api/auth/login/",
-        {
-          username,
-          password,
-        }
-      );
+      const loginResponse = await api.post("/auth/login/", {
+        username,
+        password,
+      });
 
       const accessToken = loginResponse.data.access;
       const refreshToken = loginResponse.data.refresh;
@@ -40,14 +37,11 @@ function LoginPage() {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
 
-      const userResponse = await axios.get(
-        "http://127.0.0.1:8000/api/auth/me/",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const userResponse = await api.get("/auth/me/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
 
       const actualRole = userResponse.data.role;
 
@@ -169,7 +163,6 @@ function LoginPage() {
       </nav>
 
       <section className="lux-login-layout">
-
         {/* LEFT SIDE */}
         <motion.div
           className="lux-hero"
@@ -343,9 +336,7 @@ function LoginPage() {
 
           {/* ROLE SELECTION */}
           <div className="role-selector">
-            <p className="role-title">
-              WHO ARE YOU?
-            </p>
+            <p className="role-title">WHO ARE YOU?</p>
 
             <p
               style={{
@@ -358,22 +349,15 @@ function LoginPage() {
             </p>
 
             <div className="role-cards">
-
               {/* JOB SEEKER */}
               <button
                 type="button"
                 className={`role-card ${
-                  selectedRole === "JOB_SEEKER"
-                    ? "active"
-                    : ""
+                  selectedRole === "JOB_SEEKER" ? "active" : ""
                 }`}
-                onClick={() =>
-                  setSelectedRole("JOB_SEEKER")
-                }
+                onClick={() => setSelectedRole("JOB_SEEKER")}
               >
-                <div className="role-icon">
-                  👤
-                </div>
+                <div className="role-icon">👤</div>
 
                 <div className="role-name">
                   <h4>Job Seeker</h4>
@@ -385,17 +369,11 @@ function LoginPage() {
               <button
                 type="button"
                 className={`role-card ${
-                  selectedRole === "RECRUITER"
-                    ? "active"
-                    : ""
+                  selectedRole === "RECRUITER" ? "active" : ""
                 }`}
-                onClick={() =>
-                  setSelectedRole("RECRUITER")
-                }
+                onClick={() => setSelectedRole("RECRUITER")}
               >
-                <div className="role-icon">
-                  🏢
-                </div>
+                <div className="role-icon">🏢</div>
 
                 <div className="role-name">
                   <h4>Recruiter</h4>
@@ -407,41 +385,29 @@ function LoginPage() {
               <button
                 type="button"
                 className={`role-card ${
-                  selectedRole === "ADMIN"
-                    ? "active"
-                    : ""
+                  selectedRole === "ADMIN" ? "active" : ""
                 }`}
-                onClick={() =>
-                  setSelectedRole("ADMIN")
-                }
+                onClick={() => setSelectedRole("ADMIN")}
               >
-                <div className="role-icon">
-                  ⚙️
-                </div>
+                <div className="role-icon">⚙️</div>
 
                 <div className="role-name">
                   <h4>Admin</h4>
                   <p>Manage SwipeX</p>
                 </div>
               </button>
-
             </div>
           </div>
 
           {/* LOGIN FORM */}
-          <form
-            className="lux-form"
-            onSubmit={handleLogin}
-          >
+          <form className="lux-form" onSubmit={handleLogin}>
             <label>
               <span>USERNAME</span>
 
               <input
                 type="text"
                 value={username}
-                onChange={(event) =>
-                  setUsername(event.target.value)
-                }
+                onChange={(event) => setUsername(event.target.value)}
                 placeholder="Your username"
                 required
               />
@@ -453,35 +419,27 @@ function LoginPage() {
               <input
                 type="password"
                 value={password}
-                onChange={(event) =>
-                  setPassword(event.target.value)
-                }
+                onChange={(event) => setPassword(event.target.value)}
                 placeholder="Your password"
                 required
               />
             </label>
 
             <div className="lux-form-options">
-
               <label className="lux-remember">
                 <input type="checkbox" />
 
-                <span>
-                  Remember me
-                </span>
+                <span>Remember me</span>
               </label>
 
               <button
                 type="button"
                 onClick={() =>
-                  setMessage(
-                    "Password recovery will be available soon."
-                  )
+                  setMessage("Password recovery will be available soon.")
                 }
               >
                 Forgot password?
               </button>
-
             </div>
 
             <motion.button
@@ -498,22 +456,14 @@ function LoginPage() {
               <span>
                 {isLoading
                   ? "Signing in..."
-                  : `Continue as ${
-                      roleNames[selectedRole]
-                    }`}
+                  : `Continue as ${roleNames[selectedRole]}`}
               </span>
 
-              <span className="submit-arrow">
-                ↗
-              </span>
+              <span className="submit-arrow">↗</span>
             </motion.button>
           </form>
 
-          {message && (
-            <p className="lux-message">
-              {message}
-            </p>
-          )}
+          {message && <p className="lux-message">{message}</p>}
 
           <div className="lux-register">
             <span>NEW HERE?</span>
@@ -526,7 +476,6 @@ function LoginPage() {
               <span>→</span>
             </button>
           </div>
-
         </motion.section>
       </section>
 
