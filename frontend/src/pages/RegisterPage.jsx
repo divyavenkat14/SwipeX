@@ -33,7 +33,7 @@ function RegisterPage() {
     try {
       console.log(formData);
       await axios.post(
-          "https://swipex-backend-vercel.vercel.app/api/auth/register/",
+          "https://swipex-backend-6zfm.onrender.com/api/auth/register/",
            formData
   );
 
