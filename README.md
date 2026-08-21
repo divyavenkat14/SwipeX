@@ -2,125 +2,98 @@
 
 ## Swipe-Based Intelligent Job Discovery and Career Assistance Platform
 
-SwipeX is a full-stack career assistance and job discovery platform designed to make the process of finding and applying for jobs more interactive, personalized, and efficient.
+SwipeX is a full-stack career assistance and job discovery platform designed to make finding and applying for jobs more interactive, efficient, and user-friendly.
 
-Instead of relying entirely on traditional job-board browsing, SwipeX introduces a swipe-based job discovery experience where job seekers can explore opportunities based on their interests, skills, and career goals.
-
-The platform provides separate experiences for **Job Seekers, Recruiters, and Administrators**, with role-based authentication and dedicated dashboards.
+The platform provides separate experiences for **Job Seekers, Recruiters, and Administrators**, with secure authentication, role-based access, job management, company management, resume management, job applications, and intelligent career assistance features.
 
 ---
 
-## 🌐 Live Application
+## 🎓 Internship Project
+
+SwipeX was developed as part of the **Infosys Springboard Internship 7.0** program.
+
+The project provided hands-on experience in designing and developing a complete full-stack application, from frontend development and REST API integration to database management, authentication, deployment, and production debugging.
+
+### Internship
+
+**Program:** Infosys Springboard Internship 7.0  
+**Project:** SwipeX – Swipe-Based Intelligent Job Discovery and Career Assistance Platform
+
+The project involved developing a production-ready web application with:
+
+- React-based frontend
+- Django REST backend
+- PostgreSQL database
+- JWT authentication
+- Role-based authorization
+- Resume and skill management
+- Job discovery and applications
+- Recruiter and company management
+- Administrator dashboard
+- Docker-based backend deployment
+- Cloud deployment using Vercel and Render
+
+---
+
+## 🌐 Live Demo
 
 ### Frontend
+
 https://swipe-x-mu.vercel.app/
 
 ### Backend API
+
 https://swipex-backend-6zfm.onrender.com/
 
-> **Frontend:** Vercel  
-> **Backend:** Render  
-> **Database:** PostgreSQL
+### GitHub Repository
+
+https://github.com/divyavenkat14/SwipeX
 
 ---
 
-# 📌 Table of Contents
+## 📌 About SwipeX
 
-- [About SwipeX](#-about-swipex)
-- [Problem Statement](#-problem-statement)
-- [Objectives](#-objectives)
-- [Key Features](#-key-features)
-- [User Roles](#-user-roles)
-- [How SwipeX Works](#-how-swipex-works)
-- [System Architecture](#-system-architecture)
-- [Technology Stack](#-technology-stack)
-- [Project Structure](#-project-structure)
-- [Backend Applications](#-backend-applications)
-- [Authentication](#-authentication)
-- [API Endpoints](#-api-endpoints)
-- [Database](#-database)
-- [Security](#-security)
-- [Frontend](#-frontend)
-- [Backend](#-backend)
-- [Docker](#-docker)
-- [Deployment](#-deployment)
-- [Local Installation](#-local-installation)
-- [Environment Variables](#-environment-variables)
-- [Future Enhancements](#-future-enhancements)
-- [Project Highlights](#-project-highlights)
-- [Author](#-author)
-- [Acknowledgement](#-acknowledgement)
-- [License](#-license)
+Traditional job portals often require users to repeatedly search, filter, and browse through large numbers of job listings.
+
+SwipeX introduces an interactive **swipe-based job discovery experience** that allows users to explore career opportunities in a more engaging way.
+
+The platform connects job seekers and recruiters while providing administrators with tools to monitor and manage the overall platform.
+
+The application is designed around three different user experiences, ensuring that each user receives functionality relevant to their role.
 
 ---
 
-# 🧠 About SwipeX
+## 🎯 Objectives
 
-Finding the right job can be overwhelming.
-
-Traditional job portals often require users to repeatedly search, filter, compare, and browse through hundreds of job listings. This can make the process time-consuming and difficult to personalize.
-
-SwipeX aims to make job discovery more engaging by introducing a **swipe-based interface** for exploring opportunities.
-
-The platform brings together:
-
-- Job discovery
-- User profiles
-- Resume management
-- Recruiter functionality
-- Company management
-- Job posting
-- Job applications
-- Administrative monitoring
-- Role-based authentication
-
-into a single platform.
-
----
-
-# ❗ Problem Statement
-
-Traditional job-search platforms can create several challenges:
-
-- Large numbers of job listings can make discovery overwhelming.
-- Users often spend significant time filtering irrelevant opportunities.
-- Recruiters need efficient ways to manage job postings and applications.
-- Job seekers need a centralized platform for their career information.
-- Administrators need visibility into users, jobs, companies, and applications.
-
-SwipeX addresses these challenges by creating an interactive and role-based career platform.
-
----
-
-# 🎯 Objectives
-
-The major objectives of SwipeX are:
-
-- Create an interactive job discovery experience.
-- Simplify the process of exploring job opportunities.
-- Provide role-based access for different users.
-- Allow job seekers to maintain career-related information.
-- Allow recruiters to manage companies and job postings.
-- Allow recruiters to manage candidate applications.
+- Simplify the job discovery process.
+- Provide an interactive swipe-based job browsing experience.
+- Connect job seekers and recruiters through a single platform.
+- Provide role-based access to platform features.
+- Allow job seekers to manage their profiles and resumes.
+- Allow recruiters to create and manage job opportunities.
+- Allow recruiters to manage company information and applications.
 - Provide administrators with platform-level statistics.
-- Build a scalable REST API backend.
-- Implement secure JWT authentication.
+- Implement secure JWT-based authentication.
+- Build a modular REST API backend.
 - Deploy the complete application to the cloud.
 
 ---
 
 # ✨ Key Features
 
-## 👨‍💼 Job Seeker
+## 👤 Job Seeker
 
 Job seekers can:
 
 - Create an account.
-- Log in securely.
+- Log in securely using JWT authentication.
 - Create and manage their profile.
 - Manage resume information.
+- Manage skills.
 - Discover available job opportunities.
-- Explore job details.
+- Search and filter jobs.
+- Explore jobs using a swipe-based interface.
+- Save or skip job opportunities.
 - Apply for suitable positions.
 - Access their personalized dashboard.
 
@@ -136,23 +109,23 @@ Recruiters can:
 - Create and manage company information.
 - Post job opportunities.
 - Manage existing job postings.
-- View job applications.
+- View candidate applications.
 - Access recruiter-protected functionality.
 
 ---
 
 ## 🛡️ Administrator
 
-Administrators have access to platform-level information.
+Administrators have access to platform-level information and management features.
 
 The administrator dashboard provides:
 
-- Total number of users
-- Total number of jobs
-- Total number of companies
-- Total number of applications
-- Total number of recruiters
-- Total number of job seekers
+- Total users
+- Total recruiters
+- Total job seekers
+- Total companies
+- Total jobs
+- Total applications
 
 Administrators can also view:
 
@@ -163,11 +136,3 @@ Administrators can also view:
 
 ---
 
-# 👥 User Roles
-
-SwipeX supports three user roles:
-
-```text
-JOB_SEEKER
-RECRUITER
-ADMIN
