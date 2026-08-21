@@ -68,20 +68,6 @@ The platform analyzes the skills present in a user's resume against the skills r
 
 Instead of simply presenting a list of jobs, SwipeX creates a more personalized experience:
 
-```text
-Resume
-   ↓
-Skill Extraction / Matching
-   ↓
-ATS Compatibility Score
-   ↓
-Job Matching
-   ↓
-Recommended Jobs
-   ↓
-Swipe-Based Discovery
-   ↓
-Apply
 ---
 
 ## 🎯 Objectives
